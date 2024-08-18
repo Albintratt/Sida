@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albin Simu</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .content {
+            padding-left: 5%;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .menu {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+            .menu li {
+                margin: 10px 0;
+            }
+
+                .menu li a {
+                    color: #3498db;
+                    text-decoration: none;
+                    font-size: 24px;
+                    transition: color 0.3s ease;
+                }
+
+                    .menu li a:hover {
+                        color: #2c3e50;
+                    }
+
+        .animation-container {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2c3e50;
+            position: relative;
+        }
+
+        /* Ball and obstacles */
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: absolute;
+            animation: moveBall 4s infinite linear;
+        }
+
+        .obstacle {
+            width: 50px;
+            height: 100px;
+            background-color: #ee6c4d;
+            position: absolute;
+        }
+
+        /* Animations */
+        @keyframes moveBall {
+            0% {
+                left: 0;
+                bottom: 50%;
+            }
+
+            25% {
+                left: 30%;
+                bottom: 80%; /* Jump over the first obstacle */
+            }
+
+            50% {
+                left: 50%;
+                bottom: 30%; /* Go under the second obstacle */
+            }
+
+            75% {
+                left: 70%;
+                bottom: 80%; /* Jump over the third obstacle */
+            }
+
+            100% {
+                left: 100%;
+                bottom: 50%;
+            }
+        }
+
+        .obstacle.one {
+            left: 30%;
+            bottom: 50%;
+            height: 50px;
+        }
+
+        .obstacle.two {
+            left: 50%;
+            bottom: 50%;
+            height: 50px;
+        }
+
+        .obstacle.three {
+            left: 70%;
+            bottom: 50%;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Albin Simu</h1>
+        <ul class="menu">
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="socials.html">Social Media</a></li>
+        </ul>
+    </div>
+    <div class="animation-container">
+        <div class="ball"></div>
+        <div class="obstacle one"></div>
+        <div class="obstacle two"></div>
+        <div class="obstacle three"></div>
+    </div>
+</body>
+
+</html>
