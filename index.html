@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: "Arial", sans-serif;
-            background-color: #f4f4f4;
+            background-color: #c8c8c8;
             color: #333;
             margin: 0;
             padding: 0;
@@ -26,7 +26,7 @@
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 55px;
             margin: 0;
             color: #2c3e50;
         }
@@ -43,9 +43,9 @@
             }
 
                 .menu li a {
-                    color: #3498db;
+                    color: #ee6c4d;
                     text-decoration: none;
-                    font-size: 24px;
+                    font-size: 28px;
                     transition: color 0.3s ease;
                 }
 
@@ -63,68 +63,171 @@
             position: relative;
         }
 
-        /* Ball and obstacles */
+        /* Ball and Trail */
         .ball {
             width: 50px;
             height: 50px;
             background-color: #3498db;
             border-radius: 50%;
             position: absolute;
-            animation: moveBall 4s infinite linear;
+            animation: moveBall 8s infinite linear;
+            z-index: 2; /* Ball is above the trail */
         }
 
-        .obstacle {
-            width: 50px;
-            height: 100px;
-            background-color: #ee6c4d;
+        .trail {
             position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            z-index: 1; /* Trail is below the ball */
+            opacity: 0.5;
+            filter: blur(10px);
+            animation: trailMove 8s infinite linear;
         }
 
-        /* Animations */
+            .trail:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .trail:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .trail:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+        /* Ball Movement Animation */
         @keyframes moveBall {
             0% {
                 left: 0;
                 bottom: 50%;
             }
 
-            25% {
+            12.5% {
                 left: 30%;
-                bottom: 80%; /* Jump over the first obstacle */
+                bottom: 65%; /* Jump over the first obstacle */
+            }
+
+            25% {
+                left: 50%;
+                bottom: 35%; /* Go under the second obstacle */
+            }
+
+            37.5% {
+                left: 70%;
+                bottom: 65%; /* Jump over the third obstacle */
             }
 
             50% {
-                left: 50%;
-                bottom: 30%; /* Go under the second obstacle */
+                left: 100%;
+                bottom: 50%; /* Reaches the end on the right */
+            }
+
+            62.5% {
+                left: 70%;
+                bottom: 35%; /* Move back under the third obstacle */
             }
 
             75% {
-                left: 70%;
-                bottom: 80%; /* Jump over the third obstacle */
+                left: 50%;
+                bottom: 65%; /* Jump back over the second obstacle */
+            }
+
+            87.5% {
+                left: 30%;
+                bottom: 35%; /* Go under the first obstacle */
             }
 
             100% {
-                left: 100%;
-                bottom: 50%;
+                left: 0;
+                bottom: 50%; /* Return to the starting point */
             }
         }
 
-        .obstacle.one {
-            left: 30%;
-            bottom: 50%;
-            height: 50px;
+        /* Trail Movement Animation */
+        @keyframes trailMove {
+            0% {
+                left: 0;
+                bottom: 50%;
+                opacity: 0;
+            }
+
+            12.5% {
+                left: 30%;
+                bottom: 65%;
+                opacity: 0.4;
+            }
+
+            25% {
+                left: 50%;
+                bottom: 35%;
+                opacity: 0.4;
+            }
+
+            37.5% {
+                left: 70%;
+                bottom: 65%;
+                opacity: 0.4;
+            }
+
+            50% {
+                left: 100%;
+                bottom: 50%;
+                opacity: 0;
+            }
+
+            62.5% {
+                left: 70%;
+                bottom: 35%;
+                opacity: 0.4;
+            }
+
+            75% {
+                left: 50%;
+                bottom: 65%;
+                opacity: 0.4;
+            }
+
+            87.5% {
+                left: 30%;
+                bottom: 35%;
+                opacity: 0.4;
+            }
+
+            100% {
+                left: 0;
+                bottom: 50%;
+                opacity: 0;
+            }
         }
 
-        .obstacle.two {
-            left: 50%;
-            bottom: 50%;
+        /* Static Obstacles */
+        .obstacle {
+            width: 50px;
             height: 50px;
+            background-color: #ee6c4d;
+            position: absolute;
         }
 
-        .obstacle.three {
-            left: 70%;
-            bottom: 50%;
-            height: 50px;
-        }
+            .obstacle.one {
+                left: 30%;
+                bottom: 50%;
+                height: 50px;
+            }
+
+            .obstacle.two {
+                left: 50%;
+                bottom: 50%;
+                height: 50px;
+            }
+
+            .obstacle.three {
+                left: 70%;
+                bottom: 50%;
+                height: 50px;
+            }
     </style>
 </head>
 
@@ -132,12 +235,15 @@
     <div class="content">
         <h1>Albin Simu</h1>
         <ul class="menu">
-            <li><a href="Cv.html">curriculum vitae</a></li>
+            <li><a href="Cv.html">Curriculum vitae</a></li>
             <li><a href="aboutme.html">Om mig</a></li>
             <li><a href="SocialMedia.html">Sociala medier</a></li>
         </ul>
     </div>
     <div class="animation-container">
+        <div class="trail"></div>
+        <div class="trail"></div>
+        <div class="trail"></div>
         <div class="ball"></div>
         <div class="obstacle one"></div>
         <div class="obstacle two"></div>
@@ -146,3 +252,4 @@
 </body>
 
 </html>
+
